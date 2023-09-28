@@ -90,18 +90,14 @@ void ProgrammingTask22(int _testCasesCount) {
 
             // Measuring Linear Search
             auto start = std::chrono::high_resolution_clock::now();
-            for (int i = 0; i < 10; ++i) {
-                linearSearch(randomValue, arrayToSearchFrom, length);
-            }
+            linearSearch(randomValue, arrayToSearchFrom, length);
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
             std::cout << "Linear Search Time for length " << length << ": " << duration.count() / 10.0 << " microseconds" << std::endl;
 
             // Measuring Binary Search
             start = std::chrono::high_resolution_clock::now();
-            for (int i = 0; i < 10; ++i) {
-                binarySearch(randomValue, arrayToSearchFrom, length);
-            }
+            binarySearch(randomValue, arrayToSearchFrom, length);
             stop = std::chrono::high_resolution_clock::now();
             duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
             std::cout << "Binary Search Time for length " << length << ": " << duration.count() / 10.0 << " microseconds" << std::endl;
