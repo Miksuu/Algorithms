@@ -41,6 +41,17 @@ void performLinearSearchOperations(int _testCasesCount, std::uniform_int_distrib
     std::cout << "\n";
 }
 
+void performBinarySearchOperations(int _testCasesCount, std::uniform_int_distribution<int> _distribution, std::mt19937 _generator,
+    const int* _arrayToSearchFrom, int _arrayLength) {
+    for (int tc = 0; tc < _testCasesCount; ++tc) {
+        int numberToSearchFor = _distribution(_generator);
+        bool found = binarySearch(numberToSearchFor, _arrayToSearchFrom, _arrayLength);
+
+        std::cout << "performBinarySearchOperations(): TC " << tc << " | numberToSearchFor " << numberToSearchFor << " found: " << std::boolalpha << found << std::endl;
+    }
+    std::cout << "\n";
+}
+
 void ProgrammingTask21(int _testCasesCount) {
     int arrayToSearchFrom[] = {1, 4, 6, 11, 13, 16, 19, 20, 25, 27, 29, 30, 32, 36, 39, 42, 45, 48, 49, 53};
     int arrayLength = sizeof(arrayToSearchFrom) / sizeof(arrayToSearchFrom[0]);
@@ -53,6 +64,7 @@ void ProgrammingTask21(int _testCasesCount) {
     std::uniform_int_distribution<int> distribution(0, maxElementToSearchFor);
 
     performLinearSearchOperations(_testCasesCount, distribution, generator, arrayToSearchFrom, arrayLength);
+    performBinarySearchOperations(_testCasesCount, distribution, generator, arrayToSearchFrom, arrayLength);
 }
 
 void ProgrammingTask22(int _testCasesCount) {
