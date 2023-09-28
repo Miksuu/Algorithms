@@ -92,15 +92,15 @@ void ProgrammingTask22(int _testCasesCount) {
             auto start = std::chrono::high_resolution_clock::now();
             linearSearch(randomValue, arrayToSearchFrom, length);
             auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            std::cout << "Linear Search Time for length " << length << ": " << duration.count() / 10.0 << " microseconds" << std::endl;
+            auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+            std::cout << "Linear Search Time for length " << length << ": " << duration.count() / 10.0 << " nanoseconds" << std::endl;
 
             // Measuring Binary Search
             start = std::chrono::high_resolution_clock::now();
             binarySearch(randomValue, arrayToSearchFrom, length);
             stop = std::chrono::high_resolution_clock::now();
-            duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            std::cout << "Binary Search Time for length " << length << ": " << duration.count() / 10.0 << " microseconds" << std::endl;
+            duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+            std::cout << "Binary Search Time for length " << length << ": " << duration.count() / 10.0 << " nanoseconds" << std::endl;
 
             delete[] arrayToSearchFrom;
         }
