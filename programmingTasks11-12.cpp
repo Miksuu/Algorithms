@@ -4,15 +4,16 @@
 #include "ArrayTools.cpp"
 
 // Finds the max element in an array
-int findMaxElementInArray(int _arrayInput[], int _arrayLength) {
-    int maxElement = 0;
-    for (int i = 0; i < _arrayLength; ++i) {
-        if (_arrayInput[i] > maxElement) {
-            maxElement = _arrayInput[i];
-        }
-    }
-    return maxElement;
-}
+// Moved to ArrayTools
+//int findMaxElementInArray(int _arrayInput[], int _arrayLength) {
+//    int maxElement = 0;
+//    for (int i = 0; i < _arrayLength; ++i) {
+//        if (_arrayInput[i] > maxElement) {
+//            maxElement = _arrayInput[i];
+//        }
+//    }
+//    return maxElement;
+//}
 
 // Function that takes some number amount (as parameter) and creates that amount of integers in array and finds the max element and prints it
 void CreateSomeAmountOfRandomNumbersAndPlaceThemInArrayAndFindMaxElement(int _arrayLength, int _minNum, int _maxNum) {
@@ -32,7 +33,7 @@ void CreateSomeAmountOfRandomNumbersAndPlaceThemInArrayAndFindMaxElement(int _ar
 
     ArrayTools::printArray("Elements: ", integerArray, _arrayLength);
 
-    int maxElement = findMaxElementInArray(integerArray, _arrayLength);
+    int maxElement = ArrayTools::findMaxElementInArray(integerArray, _arrayLength);
     std::cout << "Maximum Element: " << maxElement << "\n\n";
 
     // Remember to delete the array to free up the memory

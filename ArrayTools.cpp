@@ -15,4 +15,15 @@ public:
         }
         std::cout << " ]" << std::endl;
     }
+
+    // Finds the max element in an array
+    static int findMaxElementInArray(int _arrayInput[], int _arrayLength) {
+        int maxElement = 0;
+        for (int i = 0; i < _arrayLength; ++i) {
+            if (_arrayInput[i] > maxElement) {
+                maxElement = _arrayInput[i];
+            }
+        }
+        return maxElement;
+    }
 };
