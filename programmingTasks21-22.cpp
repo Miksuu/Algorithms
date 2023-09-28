@@ -41,6 +41,7 @@ void performLinearSearchOperations(int _testCasesCount, std::uniform_int_distrib
     std::cout << "\n";
 }
 
+// Running the test cases with binary search
 void performBinarySearchOperations(int _testCasesCount, std::uniform_int_distribution<int> _distribution, std::mt19937 _generator,
     const int* _arrayToSearchFrom, int _arrayLength) {
     for (int tc = 0; tc < _testCasesCount; ++tc) {
