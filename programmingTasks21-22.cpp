@@ -71,13 +71,52 @@ void ProgrammingTask21(int _testCasesCount) {
 }
 
 void ProgrammingTask22(int _testCasesCount) {
-}
+    for (int tc = 0; tc < _testCasesCount; ++tc) {
+        std::cout << "ProgrammingTask22() : TC " << tc << "\n";
 
+        int timesToRun[] = { 1000, 100000, 10000000 };
+        for (int length : timesToRun) {
+            int* arrayToSearchFrom = new int[length];
+            for (int i = 0; i < length; ++i) {
+                arrayToSearchFrom[i] = i + 1;
+            }
+
+            int maxElementToSearchFor = ArrayTools::findMaxElementInArray(arrayToSearchFrom, length);
+            unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+            std::mt19937 generator(seed);
+            std::uniform_int_distribution<int> distribution(0, maxElementToSearchFor);
+
+            int randomValue = distribution(generator);
+
+            // Measuring Linear Search
+            auto start = std::chrono::high_resolution_clock::now();
+            for (int i = 0; i < 10; ++i) {
+                linearSearch(randomValue, arrayToSearchFrom, length);
+            }
+            auto stop = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+            std::cout << "Linear Search Time for length " << length << ": " << duration.count() / 10.0 << " microseconds" << std::endl;
+
+            // Measuring Binary Search
+            start = std::chrono::high_resolution_clock::now();
+            for (int i = 0; i < 10; ++i) {
+                binarySearch(randomValue, arrayToSearchFrom, length);
+            }
+            stop = std::chrono::high_resolution_clock::now();
+            duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+            std::cout << "Binary Search Time for length " << length << ": " << duration.count() / 10.0 << " microseconds" << std::endl;
+
+            delete[] arrayToSearchFrom;
+        }
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+}
 
 int main() {
     // Define the number of test cases for each of the linear and binary searches here
     ProgrammingTask21(10);
-    //ProgrammingTask22();
+    ProgrammingTask22(10);
 
     return 0;
 }
