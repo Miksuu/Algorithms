@@ -24,5 +24,11 @@
     <ClCompile Include="MemoryTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="programmingTasks11-12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="programmingTasks21-22.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
