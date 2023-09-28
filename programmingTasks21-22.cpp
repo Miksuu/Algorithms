@@ -29,14 +29,14 @@ bool binarySearch(int _numberToSearchFor, const int* _arrayToSearchFrom, int _ar
     return false;
 }
 
+// Running the test cases with linear search
 void performLinearSearchOperations(int _testCasesCount, std::uniform_int_distribution<int> _distribution, std::mt19937 _generator,
     const int* _arrayToSearchFrom, int _arrayLength) {
-    // Running the test cases with linear search
     for (int tc = 0; tc < _testCasesCount; ++tc) {
         int numberToSearchFor = _distribution(_generator);
         bool found = linearSearch(numberToSearchFor, _arrayToSearchFrom, _arrayLength);
 
-        std::cout << "TC: " << tc << " | numberToSearchFor " << numberToSearchFor << " found: " << std::boolalpha << found << std::endl;
+        std::cout << "performLinearSearchOperations(): TC " << tc << " | numberToSearchFor " << numberToSearchFor << " found: " << std::boolalpha << found << std::endl;
     }
     std::cout << "\n";
 }
