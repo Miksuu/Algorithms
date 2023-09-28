@@ -36,7 +36,8 @@ void performLinearSearchOperations(int _testCasesCount, std::uniform_int_distrib
         int numberToSearchFor = _distribution(_generator);
         bool found = linearSearch(numberToSearchFor, _arrayToSearchFrom, _arrayLength);
 
-        std::cout << "performLinearSearchOperations(): TC " << tc << " | numberToSearchFor " << numberToSearchFor << " found: " << std::boolalpha << found << std::endl;
+        std::cout << "performLinearSearchOperations(): TC " << tc << " | numberToSearchFor " << numberToSearchFor << " found: "
+            << std::boolalpha << found << std::endl;
     }
     std::cout << "\n";
 }
@@ -48,7 +49,8 @@ void performBinarySearchOperations(int _testCasesCount, std::uniform_int_distrib
         int numberToSearchFor = _distribution(_generator);
         bool found = binarySearch(numberToSearchFor, _arrayToSearchFrom, _arrayLength);
 
-        std::cout << "performBinarySearchOperations(): TC " << tc << " | numberToSearchFor " << numberToSearchFor << " found: " << std::boolalpha << found << std::endl;
+        std::cout << "performBinarySearchOperations(): TC " << tc << " | numberToSearchFor " << numberToSearchFor << " found: "
+            << std::boolalpha << found << std::endl;
     }
     std::cout << "\n";
 }
