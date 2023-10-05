@@ -109,10 +109,10 @@ void ProgrammingTask22(int _testCasesCount) {
     std::cout << "\n";
 }
 
-int main() {
-    // Define the number of test cases for each of the linear and binary searches here
-    ProgrammingTask21(10);
-    ProgrammingTask22(10);
-
-    return 0;
-}
+//int main() {
+//    // Define the number of test cases for each of the linear and binary searches here
+//    ProgrammingTask21(10);
+//    ProgrammingTask22(10);
+//
+//    return 0;
+//}
