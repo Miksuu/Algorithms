@@ -132,6 +132,7 @@
     <ClCompile Include="MemoryTools.cpp" />
     <ClCompile Include="programmingTasks11-12.cpp" />
     <ClCompile Include="programmingTasks21-22.cpp" />
+    <ClCompile Include="programmingTasks31-32.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,5 +30,8 @@
     <ClCompile Include="programmingTasks21-22.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="programmingTasks31-32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
