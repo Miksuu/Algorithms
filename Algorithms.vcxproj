@@ -130,6 +130,7 @@
     <ClCompile Include="Algorithms.cpp" />
     <ClCompile Include="ArrayTools.cpp" />
     <ClCompile Include="MemoryTools.cpp" />
+    <ClCompile Include="programmingTask41.cpp" />
     <ClCompile Include="programmingTasks11-12.cpp" />
     <ClCompile Include="programmingTasks21-22.cpp" />
     <ClCompile Include="programmingTasks31-32.cpp" />
