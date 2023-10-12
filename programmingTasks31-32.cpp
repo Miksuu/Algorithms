@@ -61,12 +61,12 @@ void ProgrammingTask32(int _m, int _n, int _loopIterationsCount) {
         std::cout << str << std::endl;
     }
 }
-
-int main() {
-    ProgrammingTask31(13337);
-
-    // With m=3, n=2, _loopIterationsCount > 7 causes stack overflow
-    ProgrammingTask32(3, 2, 7);
-
-    return 0;
-}
+//
+//int main() {
+//    ProgrammingTask31(13337);
+//
+//    // With m=3, n=2, _loopIterationsCount > 7 causes stack overflow
+//    ProgrammingTask32(3, 2, 7);
+//
+//    return 0;
+//}
