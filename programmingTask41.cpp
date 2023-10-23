@@ -45,8 +45,8 @@ void ProgrammingTask41() {
     }
 }
 
-int main() {
-    ProgrammingTask41();
+//int main() {
+//    ProgrammingTask41();
 
     // Results:
     // I changed it to be from 10k to 1000k elements since the execution time was getting too high for 10000k elements and this proves the point either way
@@ -54,6 +54,6 @@ int main() {
     // Average time to sort 100000 elements : 15.3924 seconds
     // Average time to sort 1000000 elements : 1544.13 seconds
     // The Big O-notation is clearly visible here, the time does not scale linearly. It does follow the O(f(n)).
-
-    return 0;
-}
+//
+//    return 0;
+//}
