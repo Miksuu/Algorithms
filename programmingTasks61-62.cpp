@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <fstream>
 
 class Stack {
 private:
@@ -74,7 +75,37 @@ void ProgrammingTask61() {
     std::cout << "Correct syntax.\n";    
 }
 
+std::string readFile(std::string _filename) {
+    std::string input;
+    std::string line;
+    std::ifstream file(_filename);
+    if (file.is_open()) {
+        while (getline(file, line)) {
+            input += line;
+        }
+        file.close();
+    }
+    return input;
+}
+
+void ProgrammingTask62() {
+    std::cout << "\n--------------PT62--------------\n";
+    std::string fileNames[] = {"correctSyntax.txt", "incorrectSyntax.txt"};
+    std::string fileContent;
+
+    for (int i = 0; i < 2; i++) {
+        fileContent = readFile(fileNames[i]);
+        std::cout << "Reading " << fileNames[i] << " with content: " << fileContent << ":\n";
+        if (isSyntaxCorrect(fileContent)) {
+            std::cout << "Correct syntax.\n";
+        } else {
+            std::cout << "Incorrect syntax.\n";
+        }
+    }
+}
+
 int main() {
     ProgrammingTask61();
+    ProgrammingTask62();
     return 0;
 }
