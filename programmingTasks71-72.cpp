@@ -1,29 +1,32 @@
 #include <iostream>
+#include <string>
 
+template <typename T>
 class Node {
     public:
-        int key;
+        T key;
         Node* left;
         Node* right;
 
-        Node(int _item) {
+        Node(T _item) {
             key = _item;
             left = nullptr;
             right = nullptr;
         }
 };
 
+template <typename T>
 class BinarySearchTree {
     public:
-        Node* root;
+        Node<T>* root;
 
         BinarySearchTree() {
             root = nullptr;
         }
 
-        Node* insert(Node* _node, int _key) {
+        Node<T>* insert(Node<T>* _node, T _key) {
             if (_node == nullptr) {
-                return new Node(_key);
+                return new Node<T>(_key);
             }
 
             if (_key < _node->key) {
@@ -36,13 +39,13 @@ class BinarySearchTree {
             return _node;
         }
 
-        void insertArray(int _elementsToInsert[], int _n) {
+        void insertArray(T _elementsToInsert[], int _n) {
             for(int i = 0; i < _n; i++) {
                 root = insert(root, _elementsToInsert[i]);
             }
         }
         
-        void print(Node* _root) {
+        void print(Node<T>* _root) {
             if (_root != nullptr) {
                 print(_root->left);
                 std::cout << _root->key << " ";
@@ -50,7 +53,7 @@ class BinarySearchTree {
             }
         }
 
-        int countNodes(Node* _node) {
+        int countNodes(Node<T>* _node) {
             if (_node == nullptr) {
                 return 0;
             }
@@ -58,7 +61,7 @@ class BinarySearchTree {
             return countNodes(_node->left) + countNodes(_node->right) + 1;
         }
 
-        int countLeaves(Node* _node) {
+        int countLeaves(Node<T>* _node) {
             if(_node == NULL)     
                 return 0; 
             if(_node->left == NULL && _node->right == NULL) 
@@ -71,7 +74,7 @@ class BinarySearchTree {
 
 void ProgrammingTask71() {
     std::cout << "\n--------------PT71--------------\n";
-    BinarySearchTree binarySearchTree;
+    BinarySearchTree<int> binarySearchTree;
     int elementsToInsert[] = {3, 4, 5, 1, 7, 6, 8, 2};
     binarySearchTree.insertArray(elementsToInsert, sizeof(elementsToInsert)/sizeof(elementsToInsert[0]));
 
@@ -81,8 +84,21 @@ void ProgrammingTask71() {
 
 void ProgrammingTask72() {
     std::cout << "\n--------------PT72--------------\n";
-    BinarySearchTree binarySearchTree;
+    BinarySearchTree<int> binarySearchTree;
     int elementsToInsert[] = {7, 4, 3, 1, 6, 5, 8, 9, 10, 15, 12, 11, 14, 13, 18, 17, 16, 20, 19, 2};
+    binarySearchTree.insertArray(elementsToInsert, sizeof(elementsToInsert)/sizeof(elementsToInsert[0]));
+
+    std::cout << "Elements in the order: ";
+    binarySearchTree.print(binarySearchTree.root);
+
+    std::cout << "\nNumber of nodes: " << binarySearchTree.countNodes(binarySearchTree.root);
+    std::cout << "\nNumber of leaves: " << binarySearchTree.countLeaves(binarySearchTree.root);
+}
+
+void ProgrammingTaskExtra() {
+    std::cout << "\n--------------PT_E--------------\n";
+    BinarySearchTree<std::string> binarySearchTree;
+    std::string elementsToInsert[] = {"f", "j", "b", "o", "l", "g", "a", "i", "e", "n", "c", "h", "m", "d", "k"};
     binarySearchTree.insertArray(elementsToInsert, sizeof(elementsToInsert)/sizeof(elementsToInsert[0]));
 
     std::cout << "Elements in the order: ";
@@ -95,5 +111,6 @@ void ProgrammingTask72() {
 int main() {
     ProgrammingTask71();
     ProgrammingTask72();
+    ProgrammingTaskExtra();
     return 0;
 }
