@@ -135,7 +135,34 @@ public:
 void ProgrammingTaskCustom() {
     std::cout << "\n--------------PT_Custom--------------\n";
     BinarySearchTree<Person> binarySearchTree;
-    Person elementsToInsert[] = {Person("Alice", 30), Person("Bob", 20), Person("Charlie", 40)};
+    Person elementsToInsert[] = {
+        Person("Alice", 30),
+        Person("Bob", 20),
+        Person("Charlie", 40),
+        Person("David", 25),
+        Person("Emily", 35),
+        Person("Frank", 45),
+        Person("Grace", 28),
+        Person("Henry", 38),
+        Person("Isabella", 22),
+        Person("Jack", 32),
+        Person("Kate", 42),
+        Person("Liam", 27),
+        Person("Mia", 37),
+        Person("Noah", 19),
+        Person("Olivia", 29),
+        Person("Patrick", 39),
+        Person("Quinn", 23),
+        Person("Ryan", 33),
+        Person("Sophia", 43),
+        Person("Thomas", 26),
+        Person("Ursula", 36),
+        Person("Victor", 21),
+        Person("Wendy", 31),
+        Person("Xavier", 41),
+        Person("Yvonne", 24),
+        Person("Zachary", 34)
+    };
     binarySearchTree.insertArray(elementsToInsert, sizeof(elementsToInsert)/sizeof(elementsToInsert[0]));
 
     std::cout << "Elements in the order: ";
