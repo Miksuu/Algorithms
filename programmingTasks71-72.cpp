@@ -112,10 +112,11 @@ class Person {
 public:
     std::string name;
     int age;
+    bool isAlive;
 
-    Person() : name(""), age(0) {}
+    Person() : name(""), age(0), isAlive(true) {}
 
-    Person(std::string _name, int _age) : name(_name), age(_age) {}
+    Person(std::string _name, int _age, bool _isAlive) : name(_name), age(_age), isAlive(_isAlive) {}
 
     // Overload the comparison operators
     bool operator<(const Person& other) const {
@@ -128,6 +129,9 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Person& person) {
         os << person.name << " (" << person.age << ")";
+        if (!person.isAlive) {
+            os << " [Deceased]";
+        }
         return os;
     }
 };
@@ -136,32 +140,32 @@ void ProgrammingTaskCustom() {
     std::cout << "\n--------------PT_Custom--------------\n";
     BinarySearchTree<Person> binarySearchTree;
     Person elementsToInsert[] = {
-        Person("Alice", 30),
-        Person("Bob", 20),
-        Person("Charlie", 40),
-        Person("David", 25),
-        Person("Emily", 35),
-        Person("Frank", 45),
-        Person("Grace", 28),
-        Person("Henry", 38),
-        Person("Isabella", 22),
-        Person("Jack", 32),
-        Person("Kate", 42),
-        Person("Liam", 27),
-        Person("Mia", 37),
-        Person("Noah", 19),
-        Person("Olivia", 29),
-        Person("Patrick", 39),
-        Person("Quinn", 23),
-        Person("Ryan", 33),
-        Person("Sophia", 43),
-        Person("Thomas", 26),
-        Person("Ursula", 36),
-        Person("Victor", 21),
-        Person("Wendy", 31),
-        Person("Xavier", 41),
-        Person("Yvonne", 24),
-        Person("Zachary", 34)
+        Person("Alice", 30, true),
+        // Person("Bob", 20),
+        // Person("Charlie", 40),
+        // Person("David", 25),
+        // Person("Emily", 35),
+        // Person("Frank", 45),
+        // Person("Grace", 28),
+        // Person("Henry", 38),
+        // Person("Isabella", 22),
+        // Person("Jack", 32),
+        // Person("Kate", 42),
+        // Person("Liam", 27),
+        // Person("Mia", 37),
+        // Person("Noah", 19),
+        // Person("Olivia", 29),
+        // Person("Patrick", 39),
+        // Person("Quinn", 23),
+        // Person("Ryan", 33),
+        // Person("Sophia", 43),
+        // Person("Thomas", 26),
+        // Person("Ursula", 36),
+        // Person("Victor", 21),
+        // Person("Wendy", 31),
+        // Person("Xavier", 41),
+        // Person("Yvonne", 24),
+        // Person("Zachary", 34)
     };
     binarySearchTree.insertArray(elementsToInsert, sizeof(elementsToInsert)/sizeof(elementsToInsert[0]));
 
@@ -172,10 +176,31 @@ void ProgrammingTaskCustom() {
     std::cout << "\nNumber of leaves: " << binarySearchTree.countLeaves(binarySearchTree.root);
 }
 
+void FamilyTree() {
+    std::cout << "\n--------------FamilyTree--------------\n";
+    BinarySearchTree<Person> familyTree;
+    Person familyMembers[20];
+    for(int i = 0; i < 20; i++) {
+        std::string name = "Person" + std::to_string(i);
+        int age = rand() % 106;
+        bool isAlive = (rand() % 106) > age;
+        familyMembers[i] = Person(name, age, isAlive);
+    }
+    familyTree.insertArray(familyMembers, sizeof(familyMembers)/sizeof(familyMembers[0]));
+
+    std::cout << "Family members in the order: ";
+    familyTree.print(familyTree.root);
+
+    std::cout << "\nNumber of family members: " << familyTree.countNodes(familyTree.root);
+    std::cout << "\nNumber of leaves: " << familyTree.countLeaves(familyTree.root);
+}
+
+
 int main() {
     //ProgrammingTask71();
-    ProgrammingTask72();
-    ProgrammingTaskExtra();
-    ProgrammingTaskCustom();
+    // ProgrammingTask72();
+    // ProgrammingTaskExtra();
+    // ProgrammingTaskCustom();
+    FamilyTree();
     return 0;
 }
