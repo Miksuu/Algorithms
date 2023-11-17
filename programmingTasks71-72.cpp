@@ -108,9 +108,47 @@ void ProgrammingTaskExtra() {
     std::cout << "\nNumber of leaves: " << binarySearchTree.countLeaves(binarySearchTree.root);
 }
 
+class Person {
+public:
+    std::string name;
+    int age;
+
+    Person() : name(""), age(0) {}
+
+    Person(std::string _name, int _age) : name(_name), age(_age) {}
+
+    // Overload the comparison operators
+    bool operator<(const Person& other) const {
+        return age < other.age;
+    }
+
+    bool operator>(const Person& other) const {
+        return age > other.age;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Person& person) {
+        os << person.name << " (" << person.age << ")";
+        return os;
+    }
+};
+
+void ProgrammingTaskCustom() {
+    std::cout << "\n--------------PT_Custom--------------\n";
+    BinarySearchTree<Person> binarySearchTree;
+    Person elementsToInsert[] = {Person("Alice", 30), Person("Bob", 20), Person("Charlie", 40)};
+    binarySearchTree.insertArray(elementsToInsert, sizeof(elementsToInsert)/sizeof(elementsToInsert[0]));
+
+    std::cout << "Elements in the order: ";
+    binarySearchTree.print(binarySearchTree.root);
+
+    std::cout << "\nNumber of nodes: " << binarySearchTree.countNodes(binarySearchTree.root);
+    std::cout << "\nNumber of leaves: " << binarySearchTree.countLeaves(binarySearchTree.root);
+}
+
 int main() {
-    ProgrammingTask71();
+    //ProgrammingTask71();
     ProgrammingTask72();
     ProgrammingTaskExtra();
+    ProgrammingTaskCustom();
     return 0;
 }
