@@ -21,6 +21,14 @@ public:
         heapArray = new int[_cap];
     }
 
+    void increaseKey(int _i, int _new_val) {
+        heapArray[_i] = _new_val;
+        while (_i != 0 && heapArray[parent(_i)] > heapArray[_i]) {
+            std::swap(heapArray[_i], heapArray[parent(_i)]);
+            _i = parent(_i);
+        }
+    }
+
     void insert(int _k) {
         if (heapSize == capacity) {
             std::cout << "\nOverflow: Could not insert the key\n";
@@ -29,12 +37,8 @@ public:
 
         heapSize++;
         int i = heapSize - 1;
-        heapArray[i] = _k;
-
-        while (i != 0 && heapArray[parent(i)] > heapArray[i]) {
-            std::swap(heapArray[i], heapArray[parent(i)]);
-            i = parent(i);
-        }
+        heapArray[i] = INT_MAX; // Insert the new key at the end
+        increaseKey(i, _k); // Increase value of key at index 'i' to new_val
     }
 
     int delMin() {
