@@ -72,7 +72,7 @@ public:
 void ProgrammingTask81() {
     std::cout << "\n--------------PT81--------------\n";
 
-    int size = 15;
+    const int size = 15;
 
     MinHeap minHeap(size);
     int arrayOfNumbers[] = {17, 11, 6, 14, 22, 8, 1, 16, 10, 19, 12, 3, 5, 15, 13};
