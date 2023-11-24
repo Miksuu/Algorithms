@@ -32,8 +32,8 @@ public:
         heapArray[i] = _k;
 
         while (i != 0 && heapArray[parent(i)] > heapArray[i]) {
-        std::swap(heapArray[i], heapArray[parent(i)]);
-        i = parent(i);
+            std::swap(heapArray[i], heapArray[parent(i)]);
+            i = parent(i);
         }
     }
 
