@@ -18,15 +18,15 @@ struct Node {
     Node* parent;
 };
 
-float heuristic(Node* a, Node* b) {
-    int dx = a->x - b->x;
-    int dy = a->y - b->y;
+float heuristic(Node* _a, Node* _b) {
+    int dx = _a->x - _b->x;
+    int dy = _a->y - _b->y;
     return std::sqrt(dx * dx + dy * dy);
 }
 
-float distance(Node* a, Node* b) {
-    int dx = a->x - b->x;
-    int dy = a->y - b->y;
+float distance(Node* _a, Node* _b) {
+    int dx = _a->x - _b->x;
+    int dy = _a->y - _b->y;
     return std::sqrt(dx * dx + dy * dy);
 }
 
