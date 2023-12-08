@@ -157,13 +157,23 @@ public:
     }
 };
 
+class GameWorld {
+public:
+    int gridWidth;
+    int gridHeight;
+    int obstaclePercentantage;
+
+    GameWorld(int width, int height, int obstaclePercent) : gridWidth(width), gridHeight(height), obstaclePercentantage(obstaclePercent) {}
+};
+
 int main() {
     std::cout << "A* Algorithm" << std::endl;
-    int gridWidth = 5;
-    int gridHeight = 2;
+    int gridWidth = 50;
+    int gridHeight = 20;
     int obstaclePercentantage = 5;
 
-    AStar aStar(gridWidth, gridHeight, obstaclePercentantage);
+    GameWorld gameWorld(gridWidth, gridHeight, obstaclePercentantage);
+    AStar aStar(gameWorld.gridWidth, gameWorld.gridHeight, gameWorld.obstaclePercentantage);
     aStar.run();
 
     return 0;
