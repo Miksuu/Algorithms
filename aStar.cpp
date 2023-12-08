@@ -30,13 +30,13 @@ float distance(Node* a, Node* b) {
     return std::sqrt(dx * dx + dy * dy);
 }
 
-void initializeGrid(std::vector<std::vector<Node>>& _grid) {
+void initializeGrid(std::vector<std::vector<Node>>& _grid, int _gridWidth, int _gridHeight, int _obstaclePercentantage) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(1, 100);
     
-    for(int x = 0; x < 20; ++x) {
-        for(int y = 0; y < 20; ++y) {
+    for(int x = 0; x < _gridWidth; ++x) {
+        for(int y = 0; y < _gridHeight; ++y) {
             _grid[x][y].x = x;
             _grid[x][y].y = y;
             _grid[x][y].globalGoal = std::numeric_limits<float>::infinity();
@@ -47,16 +47,16 @@ void initializeGrid(std::vector<std::vector<Node>>& _grid) {
     }
 }
 
-void setNeighbours(std::vector<std::vector<Node>>& _grid) {
-    for(int x = 0; x < 20; ++x) {
-        for(int y = 0; y < 20; ++y) {
+void setNeighbours(std::vector<std::vector<Node>>& _grid, int _gridWidth, int _gridHeight) {
+    for(int x = 0; x < _gridWidth; ++x) {
+        for(int y = 0; y < _gridHeight; ++y) {
             if(y>0)
                 _grid[x][y].neighbours.push_back(&_grid[x][y - 1]);
-            if(y<19)
+            if(y<_gridHeight-1)
                 _grid[x][y].neighbours.push_back(&_grid[x][y + 1]);
             if(x>0)
                 _grid[x][y].neighbours.push_back(&_grid[x - 1][y]);
-            if(x<19)
+            if(x<_gridWidth-1)
                 _grid[x][y].neighbours.push_back(&_grid[x + 1][y]);
         }
     }
@@ -129,12 +129,16 @@ void printGrid(const std::vector<std::vector<Node>>& _grid, Node* _startNode, No
 
 void aStarMain() {
     std::cout << "A* Algorithm" << std::endl;
-    std::vector<std::vector<Node>> grid(20, std::vector<Node>(20));
-    initializeGrid(grid);
-    setNeighbours(grid);
+    int gridWidth = 15;
+    int gridHeight = 10;
+    int obstaclePercentantage = 15;
+
+    std::vector<std::vector<Node>> grid(gridWidth, std::vector<Node>(gridHeight));
+    initializeGrid(grid, gridWidth, gridHeight, obstaclePercentantage);
+    setNeighbours(grid, gridWidth, gridHeight);
 
     Node* startNode = &grid[0][0];
-    Node* endNode = &grid[19][19];
+    Node* endNode = &grid[gridWidth-1][gridHeight-1];
     startNode->localGoal = 0.0f;
     startNode->globalGoal = heuristic(startNode, endNode);
 
