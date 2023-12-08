@@ -40,7 +40,7 @@ void initializeGrid(std::vector<std::vector<Node>>& _grid, int _gridWidth, int _
             _grid[x][y].x = x;
             _grid[x][y].y = y;
             _grid[x][y].globalGoal = std::numeric_limits<float>::infinity();
-            if(dis(gen) <= _obstaclePercentantage) { // 10% chance
+            if(dis(gen) <= _obstaclePercentantage) {
                 _grid[x][y].isObstacle = true;
             }
         }
