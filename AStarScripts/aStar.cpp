@@ -127,29 +127,44 @@ void printGrid(const std::vector<std::vector<Node>>& _grid, Node* _startNode, No
     }
 }
 
-void aStarMain() {
-    std::cout << "A* Algorithm" << std::endl;
-    int gridWidth = 15;
-    int gridHeight = 10;
-    int obstaclePercentantage = 15;
-
-    std::vector<std::vector<Node>> grid(gridWidth, std::vector<Node>(gridHeight));
-    initializeGrid(grid, gridWidth, gridHeight, obstaclePercentantage);
-    setNeighbours(grid, gridWidth, gridHeight);
-
-    Node* startNode = &grid[0][0];
-    Node* endNode = &grid[gridWidth-1][gridHeight-1];
-    startNode->localGoal = 0.0f;
-    startNode->globalGoal = heuristic(startNode, endNode);
-
+class AStar {
+public:
+    int gridWidth;
+    int gridHeight;
+    int obstaclePercentantage;
+    std::vector<std::vector<Node>> grid;
+    Node* startNode;
+    Node* endNode;
     std::list<Node*> notTestedNodes;
-    notTestedNodes.push_back(startNode);
 
-    aStarAlgorithm(startNode, endNode, notTestedNodes);
-    printPath(startNode, endNode);
-    printGrid(grid, startNode, endNode);
-}
+    AStar(int width, int height, int obstaclePercent) : gridWidth(width), gridHeight(height), obstaclePercentantage(obstaclePercent) {
+        grid.resize(gridWidth, std::vector<Node>(gridHeight));
+        initializeGrid(grid, gridWidth, gridHeight, obstaclePercentantage);
+        setNeighbours(grid, gridWidth, gridHeight);
+
+        startNode = &grid[0][0];
+        endNode = &grid[gridWidth-1][gridHeight-1];
+        startNode->localGoal = 0.0f;
+        startNode->globalGoal = heuristic(startNode, endNode);
+
+        notTestedNodes.push_back(startNode);
+    }
+
+    void run() {
+        aStarAlgorithm(startNode, endNode, notTestedNodes);
+        printPath(startNode, endNode);
+        printGrid(grid, startNode, endNode);
+    }
+};
 
 int main() {
-    aStarMain();
+    std::cout << "A* Algorithm" << std::endl;
+    int gridWidth = 30;
+    int gridHeight = 30;
+    int obstaclePercentantage = 25;
+
+    AStar aStar(gridWidth, gridHeight, obstaclePercentantage);
+    aStar.run();
+
+    return 0;
 }
