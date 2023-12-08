@@ -37,11 +37,11 @@ void initializeGrid(std::vector<std::vector<Node>>& _grid, int _gridWidth, int _
     
     for(int x = 0; x < _gridWidth; ++x) {
         for(int y = 0; y < _gridHeight; ++y) {
-            _grid[x][y].x = x;
-            _grid[x][y].y = y;
-            _grid[x][y].globalGoal = std::numeric_limits<float>::infinity();
+            _grid[y][x].x = x;
+            _grid[y][x].y = y;
+            _grid[y][x].globalGoal = std::numeric_limits<float>::infinity();
             if(dis(gen) <= _obstaclePercentantage) {
-                _grid[x][y].isObstacle = true;
+                _grid[y][x].isObstacle = true;
             }
         }
     }
@@ -51,13 +51,13 @@ void setNeighbours(std::vector<std::vector<Node>>& _grid, int _gridWidth, int _g
     for(int x = 0; x < _gridWidth; ++x) {
         for(int y = 0; y < _gridHeight; ++y) {
             if(y>0)
-                _grid[x][y].neighbours.push_back(&_grid[x][y - 1]);
+                _grid[y][x].neighbours.push_back(&_grid[y - 1][x]);
             if(y<_gridHeight-1)
-                _grid[x][y].neighbours.push_back(&_grid[x][y + 1]);
+                _grid[y][x].neighbours.push_back(&_grid[y + 1][x]);
             if(x>0)
-                _grid[x][y].neighbours.push_back(&_grid[x - 1][y]);
+                _grid[y][x].neighbours.push_back(&_grid[y][x - 1]);
             if(x<_gridWidth-1)
-                _grid[x][y].neighbours.push_back(&_grid[x + 1][y]);
+                _grid[y][x].neighbours.push_back(&_grid[y][x + 1]);
         }
     }
 }
@@ -138,12 +138,12 @@ public:
     std::list<Node*> notTestedNodes;
 
     AStar(int width, int height, int obstaclePercent) : gridWidth(width), gridHeight(height), obstaclePercentantage(obstaclePercent) {
-        grid.resize(gridWidth, std::vector<Node>(gridHeight));
+        grid.resize(gridHeight, std::vector<Node>(gridWidth));
         initializeGrid(grid, gridWidth, gridHeight, obstaclePercentantage);
         setNeighbours(grid, gridWidth, gridHeight);
 
         startNode = &grid[0][0];
-        endNode = &grid[gridWidth-1][gridHeight-1];
+        endNode = &grid[gridHeight-1][gridWidth-1];
         startNode->localGoal = 0.0f;
         startNode->globalGoal = heuristic(startNode, endNode);
 
@@ -159,9 +159,9 @@ public:
 
 int main() {
     std::cout << "A* Algorithm" << std::endl;
-    int gridWidth = 30;
-    int gridHeight = 30;
-    int obstaclePercentantage = 25;
+    int gridWidth = 5;
+    int gridHeight = 2;
+    int obstaclePercentantage = 5;
 
     AStar aStar(gridWidth, gridHeight, obstaclePercentantage);
     aStar.run();
